@@ -33,4 +33,12 @@ func main() {
 	fmt.Printf("The scores are %v\n", scores)
 	fmt.Printf("The scores are %v\n", sort.IntsAreSorted(scores))
 
+	var intSlice = []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	index := 3
+
+	intSlice = append(intSlice[:index], intSlice[index+1:]...)
+
+	fmt.Printf("intSlice: %v\n", intSlice)
+
 }
