@@ -21,7 +21,11 @@ func main() {
 
 	fmt.Println("Thanks for rating. Your rating:", input)
 
-	numRating, _ := strconv.ParseFloat(input, 64)
+	numRating, err := strconv.ParseFloat(input, 64)
+	if err != nil {
+		fmt.Println("Error", err)
+		panic(err)
+	}
 
 	fmt.Printf("The parsed input is of type %T", numRating)
 
