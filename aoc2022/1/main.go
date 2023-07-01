@@ -4,12 +4,13 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
-	"net/http"
+	"strconv"
+	"strings"
 )
 
 func main() {
 
-	resp, err := http.Get("https://adventofcode.com/2022/day/1/input")
+	data, err := ioutil.ReadFile("input.txt")
 
 	if err != nil {
 
@@ -17,12 +18,63 @@ func main() {
 
 	}
 
-	body, err := ioutil.ReadAll(resp.Body)
+	var sumsSlice []int
 
-	if err != nil {
-		log.Fatal(err)
+	groups := strings.Split(string(data), "\n\n")
+
+	for _, group := range groups {
+
+		sum := 0
+
+		numbers := strings.Split(group, "\n")
+
+		for _, number := range numbers {
+
+			if number == "" {
+				continue
+			}
+
+			num, err := strconv.Atoi(number)
+
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			sum = sum + num
+
+		}
+
+		sumsSlice = append(sumsSlice, sum)
+
 	}
 
-	fmt.Printf(string(body))
+	sorted := bubbleSort(sumsSlice)
 
+	sorted = sorted[len(sorted)-3:]
+
+	sum := 0
+
+	for _, n := range sorted {
+		sum = sum + n
+	}
+
+	fmt.Println(sorted)
+
+	fmt.Println(sum)
+
+}
+
+func bubbleSort(arr []int) []int {
+	n := len(arr)
+	swapped := true
+	for swapped {
+		swapped = false
+		for i := 0; i < n-1; i++ {
+			if arr[i] > arr[i+1] {
+				arr[i], arr[i+1] = arr[i+1], arr[i]
+				swapped = true
+			}
+		}
+	}
+	return arr
 }
