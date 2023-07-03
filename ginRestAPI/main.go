@@ -1,6 +1,16 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"ginrestapi/initializers"
+
+	"github.com/gin-gonic/gin"
+)
+
+func init() {
+
+	initializers.LoadEnvVariables()
+
+}
 
 func main() {
 	r := gin.Default()
