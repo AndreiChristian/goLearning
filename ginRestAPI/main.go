@@ -10,6 +10,8 @@ func init() {
 
 	initializers.LoadEnvVariables()
 
+	initializers.ConnectToDb()
+
 }
 
 func main() {
