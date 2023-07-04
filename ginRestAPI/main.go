@@ -1,6 +1,7 @@
 package main
 
 import (
+	"ginrestapi/controllers"
 	"ginrestapi/initializers"
 
 	"github.com/gin-gonic/gin"
@@ -17,13 +18,9 @@ func init() {
 func main() {
 	r := gin.Default()
 
-	r.GET("/", func(c *gin.Context) {
+	r.POST("/", controllers.CreatePost)
 
-		c.JSON(200, gin.H{
-			"hello": "world",
-		})
+	r.GET("/", controllers.GetPosts)
 
-	})
-
-	r.Run()
+	r.GET("posts/:id", controllers.GetPostById)
 }
