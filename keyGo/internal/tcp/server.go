@@ -24,7 +24,7 @@ func New(adress string) (*Server, error) {
 
 	}
 
-	return &Server{listener: listener, store: store.New()}, nil
+	return &Server{listener: listener, store: store.GetStore()}, nil
 
 }
 
