@@ -7,10 +7,25 @@ type Store struct {
 	mu   sync.RWMutex
 }
 
+var globalStore *Store
+
+func init() {
+
+	globalStore = &Store{
+		data: make(map[string]string),
+	}
+
+}
+
+func GetStore() *Store {
+
+	return globalStore
+
+}
+
 func New() *Store {
 
 	return &Store{
-
 		data: make(map[string]string),
 	}
 
