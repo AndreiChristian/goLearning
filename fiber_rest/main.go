@@ -17,7 +17,11 @@ func main() {
 
 	api := app.Group("/api")
 
-	router.Router(api)
+	router.BookRouter(api.Group("/books"))
+
+	router.AuthorsRouter(api.Group("/authors"))
+
+	// router.Router(api)
 
 	log.Fatal(app.Listen(":3000"))
 
