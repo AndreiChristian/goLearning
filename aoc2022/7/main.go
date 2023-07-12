@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"seven/utils"
 )
 
@@ -9,6 +8,8 @@ func main() {
 
 	lines := utils.OpenFile("sample.txt")
 
-	fmt.Println(lines)
+	for _, l := range lines {
+		utils.ProcessLine(l)
+	}
 
 }
