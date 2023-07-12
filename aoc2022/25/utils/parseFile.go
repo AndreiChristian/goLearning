@@ -4,10 +4,11 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strings"
 )
 
-func ParseFile() []string {
-	file, err := os.Open("yourfile.txt")
+func ParseFile(filename string) []string {
+	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatalf("Failed opening file: %s", err)
 	}
@@ -23,4 +24,10 @@ func ParseFile() []string {
 	}
 
 	return txtlines
+}
+
+func SplitLine(s string) []string {
+
+	return strings.Split(s, "")
+
 }
