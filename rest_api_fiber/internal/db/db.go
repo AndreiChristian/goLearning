@@ -5,18 +5,17 @@ import (
 	"gorm.io/gorm"
 )
 
-type Config struct {
-	DB *gorm.DB
-}
+var DB *gorm.DB
 
-func (c *Config) NewDB() (*gorm.DB, error) {
+func NewDB() error {
 
-	db, err := gorm.Open(sqlite.Open("test.dv"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 
 	if err != nil {
-		return nil, err
+		return err
 	}
 
-	return db, nil
+	DB = db
+	return nil
 
 }
