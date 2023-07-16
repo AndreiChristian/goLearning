@@ -1,6 +1,9 @@
 package routes
 
-import "github.com/gofiber/fiber/v2"
+import (
+	"github.com/andreichristian/rest/internal/models"
+	"github.com/gofiber/fiber/v2"
+)
 
 func BookRoutes(r fiber.Router) {
 
@@ -9,5 +12,21 @@ func BookRoutes(r fiber.Router) {
 		return c.JSON(fiber.Map{"hello": "world"})
 
 	})
+
+	r.Post("/", func(c *fiber.Ctx) error {
+
+		a:= new(models.Author)
+
+		err := c.BodyParser(a);
+
+		if err!=nil{
+	
+			return err
+		}
+
+		return c.JSON(a)
+
+	})
+
 
 }
