@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/andreichristian/rest/internal/db"
+	"github.com/andreichristian/rest/internal/routes"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -26,10 +27,9 @@ func main() {
 
 	app := fiber.New()
 
-	app.Get("/", func(c *fiber.Ctx) error {
+	api := app.Group("/api")
 
-		return c.SendString("Hello World")
-	})
+	routes.BookRoutes(api.Group("/books"))
 
 	log.Fatal(app.Listen(":3000"))
 
