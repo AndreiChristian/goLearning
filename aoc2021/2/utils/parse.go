@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"strconv"
+	"strings"
 )
 
 func Scan(fileName string) []string {
@@ -24,4 +26,20 @@ func Scan(fileName string) []string {
 	}
 
 	return text
+}
+
+func SplitText(s string) (string, int) {
+
+	splitted := strings.Split(s, " ")
+
+	command := splitted[0]
+
+	value, err := strconv.Atoi(splitted[1])
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return command, value
+
 }
