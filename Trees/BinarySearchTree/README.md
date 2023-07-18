@@ -1,11 +1,9 @@
-Sure, here are the operations for a Binary Search Tree (BST) classified into beginner, intermediate, and advanced levels:
 
-| Beginner Level | Intermediate Level | Advanced Level |
+
+| 1 | 2 | 3 |
 | ---- | ---- | ---- |
 | **Insert**: Add an element to the BST. This operation places the element at a specific location based on the binary search property. | **In-order Traversal**: Traverse the BST in in-order (left-root-right) manner. This visitation results in elements being accessed in ascending order. | **Find kth Smallest or Largest**: Find the kth smallest or largest element in the BST. This involves a variation of the in-order traversal. |
 | **Search**: Find an element in the BST. This operation can be performed efficiently due to the binary search property of BST. | **Level Order Traversal (BFS)**: Traverse the BST level by level. This is also known as Breadth-First Search (BFS) traversal. | **Balance a BST**: Create a balanced BST from a given unbalanced BST. Balancing a BST can help ensure that operations like insert, delete, and search have logarithmic time complexity. |
 | **Delete**: Remove an element from the BST. Deletion might involve rearranging of the elements to maintain the binary search property. | **Pre-order and Post-order Traversal**: These are two other common ways to traverse a BST. Pre-order is root-left-right, and post-order is left-right-root. | **Lowest Common Ancestor**: Find the Lowest Common Ancestor of two nodes in the BST. This operation finds the deepest (or lowest) node which is a common ancestor to both nodes. |
 | **Find Min/Max**: Find the minimum or maximum element in the BST. These operations are straightforward due to the binary search property (min is left-most element, max is right-most element). | **Height or Depth**: Calculate the height (or depth) of the BST. This operation finds the length of the longest path from root to a leaf. | **Convert Sorted List/Array to BST**: Given a sorted list or array, construct a balanced BST. This involves picking a middle element to be root and then recursively doing the same for the left and right halves of the list or array. |
 | | **Check if BST**: Validate whether a given binary tree is a BST. This involves checking if the binary tree satisfies the BST property. | | |
-
-Remember that implementing and understanding these operations will require a good understanding of tree-based data structures, recursion, and sometimes other data structures like stacks or queues. It's recommended to thoroughly understand the basic operations before moving on to the intermediate and advanced operations.
