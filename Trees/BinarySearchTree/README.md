@@ -1,5 +1,3 @@
-
-
 | 1 | 2 | 3 |
 | ---- | ---- | ---- |
 | **Insert**: Add an element to the BST. This operation places the element at a specific location based on the binary search property. | **In-order Traversal**: Traverse the BST in in-order (left-root-right) manner. This visitation results in elements being accessed in ascending order. | **Find kth Smallest or Largest**: Find the kth smallest or largest element in the BST. This involves a variation of the in-order traversal. |

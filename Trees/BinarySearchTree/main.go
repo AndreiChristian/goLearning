@@ -37,4 +37,7 @@ func main() {
 	BT.DeleteNode(19)
 	BT.DeleteNode(1)
 	print(BT.Root, "", true)
+
+	BT.InOrderTraversal()
+	BT.PostOrderTraversal()
 }
