@@ -9,6 +9,8 @@ import (
 type Regiser struct {
 }
 
+var CheckPoints [6]int = [6]int{20, 60, 100, 140, 180, 220}
+
 func ReadFile() []string {
 
 	file, err := os.Open("sample.txt")
@@ -32,14 +34,16 @@ func ReadFile() []string {
 	return text
 }
 
-func CheckForBenchMark(m map[int]int, cycleNumber int, sum int, registerValue int) {
+func Check(cycleNum int) bool {
 
-	_, ok := m[cycleNumber]
+	for _, value := range CheckPoints {
 
-	if !ok {
-		return
+		if value == cycleNum {
+			return true
+		}
+
 	}
 
-	sum = sum + registerValue*cycleNumber
+	return false
 
 }

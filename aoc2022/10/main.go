@@ -3,32 +3,68 @@ package main
 import (
 	"aoc10/10/utils"
 	"fmt"
+	"log"
+	"strconv"
 	"strings"
 )
-
-var CheckPoints [6]int = [6]int{20, 60, 100, 140, 180, 220}
 
 func main() {
 
 	text := utils.ReadFile()
 
 	numCycle := 0
+	sum := 0
+	register := 1
 
 	for _, value := range text {
 
 		if value == "noop" {
 
+			if utils.Check(numCycle) {
+
+				fmt.Printf("Hit a check point: %v and the value is %v \n", numCycle, register)
+				sum = sum + numCycle*register
+
+			}
+
 			numCycle++
 
 		} else if strings.HasPrefix(value, "addx") {
 
-			fmt.Println(value)
+			splitted := strings.Split(value, " ")
 
-			numCycle += 2
+			registerChangeValue, err := strconv.Atoi(splitted[1])
+
+			if err != nil {
+				log.Fatal(err)
+
+			}
+
+			if utils.Check(numCycle) {
+
+				fmt.Printf("Hit a check point: %v and the value is %v \n", numCycle, register)
+				sum = sum + numCycle*register
+
+			}
+
+			numCycle++
+
+			if utils.Check(numCycle) {
+
+				fmt.Printf("Hit a check point: %v and the value is %v \n", numCycle, register)
+
+				sum = sum + numCycle*register
+
+			}
+
+			numCycle++
+
+			register = register + registerChangeValue
 
 		}
 	}
 
-	fmt.Println(numCycle)
+	fmt.Println()
+	fmt.Println(sum)
 
 }

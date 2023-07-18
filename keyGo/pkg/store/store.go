@@ -3,7 +3,7 @@ package store
 import "sync"
 
 type Store struct {
-	data map[string]string
+	data map[string]interface{}
 	mu   sync.RWMutex
 }
 
@@ -11,7 +11,7 @@ func New() *Store {
 
 	return &Store{
 
-		data: make(map[string]string),
+		data: make(map[string]interface{}),
 	}
 
 }
@@ -25,7 +25,7 @@ func (s *Store) Set(key string, value string) {
 
 }
 
-func (s *Store) Get(key string) (string, bool) {
+func (s *Store) Get(key string) (interface{}, bool) {
 
 	s.mu.RLock()
 	defer s.mu.RUnlock()
@@ -33,7 +33,6 @@ func (s *Store) Get(key string) (string, bool) {
 	value, ok := s.data[key]
 
 	return value, ok
-
 }
 
 func (s *Store) Del(key string) bool {
@@ -51,4 +50,35 @@ func (s *Store) Del(key string) bool {
 
 	return ok
 
+}
+
+func (s *Store) LPUSH(key string, values ...string) {
+
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	list, ok := s.data[key].([]string)
+
+	if !ok {
+		list = make([]string, 0)
+	}
+
+	list = append(list, values...)
+
+}
+
+func (s *Store) RPop(key string) (string, bool) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	list, ok := s.data[key].([]string)
+	if !ok || len(list) == 0 {
+		return "", false
+	}
+
+	lastElem := list[len(list)-1]
+	list = list[:len(list)-1]
+
+	s.data[key] = list
+	return lastElem, true
 }
