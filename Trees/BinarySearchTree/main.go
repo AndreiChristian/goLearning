@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 )
 
@@ -29,15 +30,19 @@ func main() {
 
 	print(BT.Root, "", true)
 
-	BT.DeleteNode(4)
-	BT.DeleteNode(5)
-	BT.DeleteNode(7)
-	BT.DeleteNode(13)
-	BT.DeleteNode(14)
-	BT.DeleteNode(19)
-	BT.DeleteNode(1)
-	print(BT.Root, "", true)
+	// BT.DeleteNode(4)
+	// BT.DeleteNode(5)
+	// BT.DeleteNode(7)
+	// BT.DeleteNode(13)
+	// BT.DeleteNode(14)
+	// BT.DeleteNode(19)
+	// BT.DeleteNode(1)
+	// print(BT.Root, "", true)
 
-	BT.InOrderTraversal()
-	BT.PostOrderTraversal()
+	fmt.Println(BT.IsBST())
+	BT.Invert()
+
+	print(BT.Root, "", true)
+	fmt.Println(BT.IsBST())
+
 }
